@@ -6,17 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AccountPage {
-    private WebDriver driver;
-    private ElementUtils elementUtils;
-    public AccountPage(WebDriver driver) {
-        this.driver = driver;
+public class AccountPage extends ElementUtils{
+    public AccountPage(final WebDriver driver) {
+        super(driver);
         PageFactory.initElements(driver,this);
-        elementUtils = new ElementUtils(driver);
     }
     @FindBy(linkText = "Edit your account information")
     private WebElement editYourAccountInformationOption;
     public boolean getDisplayedStatusOfEditYourAccountInformationOption() {
-        return elementUtils.isElementDisplayed(editYourAccountInformationOption,20);
+        return isElementDisplayed(editYourAccountInformationOption,20);
     }
 }

@@ -5,13 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class RegisterPage {
+public class RegisterPage extends ElementUtils {
     private WebDriver driver;
-    private ElementUtils elementUtils;
-    public RegisterPage(WebDriver driver) {
+    public RegisterPage(final WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver,this);
-        elementUtils = new ElementUtils(driver);
     }
     @FindBy(id = "input-firstname")
     private WebElement firstnameTxtField;
@@ -47,46 +46,43 @@ public class RegisterPage {
     private WebElement passwordWarning;
 
     public void registerWithMandatoryFields(String firstNameText, String lastNameText, String emailText, String telephoneText, String passwordText) {
-        elementUtils.typeTextIntoElement(firstnameTxtField,firstNameText,5);
-        elementUtils.typeTextIntoElement(lastnameTxtField,lastNameText,5);
-        elementUtils.typeTextIntoElement(emailAddressTxtField,emailText,5);
-        elementUtils.typeTextIntoElement(telephoneTxtField,telephoneText,5);
-        elementUtils.typeTextIntoElement(passwordTxtField,passwordText,5);
-        elementUtils.typeTextIntoElement(passwordConfirmTxtField,passwordText,5);
+        typeTextIntoElement(firstnameTxtField,firstNameText,5);
+        typeTextIntoElement(lastnameTxtField,lastNameText,5);
+        typeTextIntoElement(emailAddressTxtField,emailText,5);
+        typeTextIntoElement(telephoneTxtField,telephoneText,5);
+        typeTextIntoElement(passwordTxtField,passwordText,5);
+        typeTextIntoElement(passwordConfirmTxtField,passwordText,5);
         passwordConfirmTxtField.sendKeys(passwordText);
-        //privacyPolicyChkBox.click();
-        //continueBtn.click();
-        //return new AccountSuccessPage(driver);
     }
     public String retrievePasswordWarning() {
-        return elementUtils.getTextFromElement(passwordWarning,10);
+        return getTextFromElement(passwordWarning,10);
     }
     public String retrieveTelephoneWarning() {
-        return elementUtils.getTextFromElement(telephoneWarning,10);
+        return getTextFromElement(telephoneWarning,10);
     }
     public String retrieveEmailAddressWarning() {
-        return elementUtils.getTextFromElement(emailAddressWarning,10);
+        return getTextFromElement(emailAddressWarning,10);
     }
     public String retrieveLastNameWarning() {
-        return elementUtils.getTextFromElement(lastNameWarning,10);
+        return getTextFromElement(lastNameWarning,10);
     }
     public String retrieveFirstNameWarning() {
-        return elementUtils.getTextFromElement(firstNameWarning,10);
+        return getTextFromElement(firstNameWarning,10);
     }
     public String retrievePrivacyPolicyWarning() {
-        return elementUtils.getTextFromElement(privacyPolicyWarning,10);
+        return getTextFromElement(privacyPolicyWarning,10);
     }
     public void selectPrivacyPolicyCheckBox() {
-        elementUtils.clickOnElement(privacyPolicyChkBox,10);
+        clickOnElement(privacyPolicyChkBox,10);
     }
     public AccountSuccessPage clickContinueButton() {
-        elementUtils.clickOnElement(continueBtn,10);
+        clickOnElement(continueBtn,10);
         return new AccountSuccessPage(driver);
     }
     public String retrieveDuplicateEmailAddressWarning() {
-        return elementUtils.getTextFromElement(duplicateEmailAddressWarning,20);
+        return getTextFromElement(duplicateEmailAddressWarning,20);
     }
     public void selectYesNewsLetterOption() {
-        elementUtils.clickOnElement(yesNewsLetterOption,10);
+        clickOnElement(yesNewsLetterOption,10);
     }
 }

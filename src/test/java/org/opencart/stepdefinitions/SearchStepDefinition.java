@@ -11,13 +11,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class SearchStepDefinition {
-    private WebDriver driver;
     private HomePage homePage;
     private SearchResultsPage searchResultsPage;
     @Given("User opens the application")
     public void user_opens_the_application() {
-        driver = DriverFactory.getDriver();
-        homePage = new HomePage(driver);
+        homePage = new HomePage(DriverFactory.getDriver());
     }
     @When("User enters valid product {string} into Search box field")
     public void user_enters_valid_product_into_search_box_field(String validProduct) {

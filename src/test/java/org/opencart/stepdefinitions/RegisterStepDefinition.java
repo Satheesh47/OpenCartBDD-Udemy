@@ -15,15 +15,13 @@ import static org.opencart.utils.Constants.*;
 import java.util.Map;
 
 public class RegisterStepDefinition {
-    private WebDriver driver;
     private HomePage homePage;
     private RegisterPage registerPage;
     private AccountSuccessPage accountSuccessPage;
     private Utilities utilities = new Utilities();
     @Given("User navigates to Register page")
     public void user_navigates_to_register_page() {
-        driver = DriverFactory.getDriver();
-        homePage = new HomePage(driver);
+        homePage = new HomePage(DriverFactory.getDriver());
         registerPage = homePage.navigateToRegisterPage();
     }
     @Given("User enters the details into below fields")

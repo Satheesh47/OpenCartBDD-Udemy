@@ -15,15 +15,13 @@ import static org.opencart.utils.Constants.EMAIL_PASSWORD_BLANK_WARNING_MSG;
 import static org.opencart.utils.Constants.EMAIL_PASSWORD_NOT_MATCHING_WARNING_MSG;
 
 public class LoginStepDefinition {
-    private WebDriver driver;
     private HomePage homePage;
     private LoginPage loginPage;
     private AccountPage accountPage;
     private Utilities utilities = new Utilities();
     @Given("User navigates to Login page")
     public void user_navigates_to_login_page() {
-        driver = DriverFactory.getDriver();
-        homePage = new HomePage(driver);
+        homePage = new HomePage(DriverFactory.getDriver());
         loginPage = homePage.navigateToLoginPage();
     }
     @When("^User enters valid email address (.+) into email field$")
